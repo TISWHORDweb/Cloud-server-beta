@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Mongoro Account Statement</title>
+  <link href="https://fonts.cdnfonts.com/css/museo-sans-rounded" rel="stylesheet" />
+  <style>
+    body {
+      font-family: Museo Sans Rounded;
+    }
+
+    /*table tr:nth-child(even) {*/
+    /*  background-color: "{{topList.paraColor}}";*/
+    /*}*/
+
+    b {
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Create two equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 35%;
+      padding: 10px;
+      padding: 0px 50px;
+      font-size: 12px;
+      /* Should be removed. Only for demonstration */
+    }
+    .columns {
+      float: left;
+      width: 40%;
+      padding: 10px;
+      padding: 0px 50px;
+      font-size: 12px;
+      /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+      border-radius: 15px;
+    }
+
+    .button1 {
+      box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+    }
+  </style>
+</head>
+​
+
+<body style="background-color: {{topList.secColor}};">
+
+  <div class="header-container" style="background-color: #f9f9f9;">
+    <div class="logo-section" style="width: 95%; margin: 50px auto;">
+      <div class="logo" style="width: 100%; padding-top:3%;">
+        <img style='display: block; margin: 0;width:30% !important;'
+          src="{{topList.logoUrl}}" alt='' />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column" style="">
+
+        <div class="set" style="line-height: 10px;">
+          <p style="display: flex; padding: 1px;">
+            <span style="width: 25%;"><b>Bill To:</b></span>
+          </p>
+          <p style="display: flex; margin: 5 !important;">
+            <span style="width: 25%;">{{topList.billTo}}</span>
+            <!-- <b>No 21, Blantry Street, Wuse 2, Abuja</b> -->
+          </p>
+          <p style="display: flex; margin: 5 !important;">
+            <span style="width: 25%;"><b>{{topList.billToEmail}}</b></span>
+            <!-- <b>{{topList.from}} - {{topList.invoiceDate}}</b> -->
+          </p>
+          <p style="display: flex; margin: 5 !important;">
+            <span style="width: 25%;">{{topList.billToPhone}}</span>
+            <!-- <b>{{topList.invoiceNumber}}</b> -->
+          </p>
+        </div>
+
+      </div>
+      <div class="column" style="">
+
+        <div class="set" style="line-height: 10px;">
+          <p style="display: flex;  padding: 1px;">
+            <span style="width: 25%;"><b>Bill From:</b></span>
+            <!-- <b>NGN{{topList.open}}</b> -->
+          </p>
+          <p style="display: flex; margin: 5 !important;">
+            <span style="width: 25%;">{{topList.billFrom}}</span>
+             <!-- <b>NGN{{topList.dueDate}}</b> -->
+          </p>
+          <p style="display: flex;  margin: 5 !important;">
+            <span style="width: 25%;">{{topList.billFromEmail}}</span>
+             <!-- <b>NGN{{topList.totalCredit}}</b> -->
+          </p>
+          <p style="display: flex;  margin: 5 !important;">
+            <span style="width: 25%;">{{topList.billFromPhone}}</span>
+            <!-- <b>NGN{{topList.close}}</b> -->
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column" style="">
+
+        <div class="set">
+          <p style="display: flex; padding: 1px;">
+            <span style="width: 25%;">Due Date</span>
+            <b>{{topList.dueDate}}</b>
+          </p>
+          <p style="display: flex; padding: 1px;">
+            <span style="width: 25%;">Invoice Date</span>
+            <b>{{topList.invoiceDate}}</b>
+          </p>
+
+        </div>
+
+      </div>
+      <div class="column" style="">
+
+        <div class="set">
+          <p style="display: flex; padding: 1px;">
+            <span style="width: 25%;">Invoice Number</span>
+            <b>{{topList.invoiceNumber}}</b>
+          </p>
+        </div>
+
+      </div>
+    </div>
+    ​
+  </div>
+
+  <div class="table" style="width: 100%;">
+    <table style="
+          width: 95%;
+          background-color: white;
+          margin: 0 auto;
+          padding: 12px;
+        ">
+      <thead style="font-size: 12px;">
+        <tr>
+          <td style="font-weight: 600; padding: 13px;">Payment Description</td>
+          <td style="font-weight: 600; padding: 13px;">Unit Price</td>
+          <td style="font-weight: 600; padding: 13px;">Quantity</td>
+          <td style="font-weight: 600; padding: 13px;">Amount</td>
+        </tr>
+      </thead>
+
+      <tbody style="font-size: 11px;">
+        ​ ​{{#each products.prodlist}}
+        <tr style="background-color: {{this.paraColor}};">
+          <td style="padding: 13px;">{{this.itemType}}</td>
+          <td style="padding: 13px;">{{this.unitprice}}</td>
+          <td style="padding: 13px;">{{this.quantity}}</td>
+          <td style="padding: 13px;">{{this.netAmount}}</td>
+        </tr>
+
+        {{/each}}
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <div class="row" style="padding:0 22px; ">
+    <div class="columns" style=" background: {{topList.secColor}}; color: #737B8B;padding: 0 10px;width:98%;float: right;">
+
+      <div class="set" style="float: right;">
+        <p style="display: flex; padding: 1px;">
+          <span style="">SubTotal: </span>
+          <b style="margin-left: 20px; color: #737B8B"> &#8358;{{topList.subtotal}}</b>
+        </p>
+        <p style="display: flex; padding: 1px;">
+          <span style="">Tax: </span>
+          <b style="margin-left: 20px; color: #737B8B"> {{topList.tax}} - &#8358;{{topList.taxAmount}}</b>
+        </p>
+      </div>
+
+    </div>
+  </div>
+  <div class="row" style="padding:0 22px; ">
+    <div class="columns" style="background-color: {{topList.priColor}}; color: white;width:98%;padding: 0 10px;">
+
+      <div class="set"style="float: right;">
+        <p style="display: flex; padding: 1px; color: white;">
+            <span style="">Total Amount Paid : </span>
+            <b style="margin-left: 20px;color: white;">  &#8358;{{topList.total}}</b>
+          </p>
+      </div>
+
+    </div>
+  </div>
+  ​
+
+  ​
+  <div class="disclaimer-container" style="width: 92%; margin: 10px auto;">
+    <div style="padding: 1rem 5%">
+      <!-- <div>
+        <h4 style="font-weight: 800;">For Transfer</h4>
+      </div> -->
+      <div style="display: inline-block; width: 100%; margin: 0rem 0 0 0; vertical-align: center;">
+        <div style="display: inline-block; width: 100%; font-size: 13px;line-height: 10px;">
+          <p style=" margin: 6 !important;"><b>Account Name</b>: {{topList.accountName}} </p>
+          <p style=" margin: 6 !important;"><b>Account Number</b>: {{topList.accountNumber}} </p>
+          <p style=" margin: 6 !important;"><b>Bank</b>: {{topList.bankName}} </p>
+          <p style=" margin: 6 !important;">
+            <a href="{{topList.paymentLink}}" class="button button1">Click to pay</a>
+            </p>
+        </div>
+      </div>
+
+      <p style="text-align: center; width: 80%; color: #757575; margin: 1rem auto; font-size: 14px; line-height: 20px;">
+        Powered by mongoro
+      </p>
+      <center>
+        <a href="www.mongoro.com" style="text-decoration: none;font-size: 13px;">www.mongoro.com</a> <br>
+        <a href="{{topList.businessEmail}}" style="text-decoration: none;font-size: 13px;">{{topList.businessEmail}}</a>
+        <p style="color: rgba(0, 0, 0, 0.6);font-size: 13px;"> {{topList.businessAddress}}</p>
+
+      </center>
+    </div>
+    ​
+    ​
+    <script src="src/index.js"></script>
+</body>
+
+</html>
