@@ -4,14 +4,7 @@ const queryInterface = sequelize.getQueryInterface();
 const sha1 = require('sha1');;
 const tableName = "admin";
 
-function isJson(str) {
-    try {
-        JSON.parse(str);
-        return true;
-    } catch (error) {
-        return false;
-    }
-}
+
 
 /**
  * Model extending sequelize model class

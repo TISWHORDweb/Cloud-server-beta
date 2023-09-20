@@ -1,11 +1,10 @@
-/**
- * Slantapp code and properties {www.slantapp.io}
- */
+// ---------------------------------------------------------------
 const useAsync = require('../core/core.async');
 const {utils, errorHandle} = require("../core");
 const Joi = require("joi");
 const sha1 = require("sha1");
 const { ModelDoctor } = require('../models');
+const ModelFaq = require('../models/model.faq');
 
 //ALL DOCTORS
 exports.allDoctors = useAsync(async (req, res) => {

@@ -17,7 +17,7 @@ exports.adminBodyGuard = useAsync(async (req, res, next) => {
     if (typeof cToken == 'undefined') throw new errorHandle("Unauthorized Access, Use a valid token and try again", 401);
     //check and decode confirm code validity
     const isValid = await ModelAdmin.findOne({ where: { token: cToken } });
-
+    
     if (isValid) {
         //****** Decrypt Last Login Date and Time *******//
         const bytes = CryptoJS.AES.decrypt(isValid.lastLogin, process.env.SECRET_KEY);
@@ -25,8 +25,7 @@ exports.adminBodyGuard = useAsync(async (req, res, next) => {
 
         //****** Convert to date from string *******//
         lastLogin = JSON.parse(lastLogin)
-        lastLogin = new Date(lastLogin)
-
+        lastLogin = new Date(lastLogin) 
         //****** Calculate an hour ago in milliseconds *******//
         const oneHour = 60 * 60 * 1000; /* ms */
         const HalfHour = 30 * 60 * 1000; /* ms */

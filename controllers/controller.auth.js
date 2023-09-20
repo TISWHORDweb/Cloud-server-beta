@@ -42,7 +42,7 @@ exports.maketerRegister = useAsync(async (req, res, next) => {
             email: Joi.string().email({minDomainSegments: 2}).required(),
             fullName: Joi.string().min(3).max(150).required().lowercase(),
             phone: Joi.string().min(3).max(150).required(),
-            password: Joi.string().min(6).max(12).required()
+            password: Joi.string().min(6).max(40).required()
         })
 
         //validate Marketer
@@ -88,7 +88,7 @@ exports.doctorRegister = useAsync(async (req, res, next) => {
             email: Joi.string().email({minDomainSegments: 2}).required(),
             fullName: Joi.string().min(3).max(150).required().lowercase(),
             phone: Joi.string().min(3).max(150).required(),
-            password: Joi.string().min(6).max(12).required()
+            password: Joi.string().min(6).max(40).required()
         })
 
         //validate Docotor
@@ -134,7 +134,7 @@ exports.adminRegister = useAsync(async (req, res, next) => {
             email: Joi.string().email({minDomainSegments: 2}).required(),
             fullName: Joi.string().min(3).max(150).required().lowercase(),
             phone: Joi.string().min(3).max(150).required(),
-            password: Joi.string().min(6).max(12).required()
+            password: Joi.string().min(6).max(40).required()
         })
 
         //validate Admin

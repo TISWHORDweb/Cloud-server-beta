@@ -6,6 +6,7 @@ const {utils, errorHandle} = require("../core");
 const Joi = require("joi");
 const sha1 = require("sha1");
 const { ModelAdmin } = require('../models');
+const ModelFaq = require('../models/model.faq');
 
 //ALL ADMIN
 exports.allAdmins = useAsync(async (req, res) => {
@@ -46,3 +47,5 @@ exports.getAdmin= useAsync(async (req, res) => {
         throw new errorHandle(e.message, 400)
     }
 })
+
+

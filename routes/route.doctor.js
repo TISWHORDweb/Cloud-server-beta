@@ -7,6 +7,8 @@ const CoreError = require('./../core/core.error');
 
 //load controller and utils
 const { allDoctors, getDoctor } = require('../controllers/controller.doctor');
+const { allFaq } = require('../controllers/controller.faq');
+const { patient } = require('../controllers/controller.patient');
 
 /**
  * auth routes
@@ -15,6 +17,12 @@ const { allDoctors, getDoctor } = require('../controllers/controller.doctor');
 //DOCTOR 
 router.get('/all', doctorBodyGuard, allDoctors);
 router.get('/single', doctorBodyGuard, getDoctor);
+
+//FAQ
+router.get('/faq/all', doctorBodyGuard, allFaq);
+
+//PATIENT
+router.post('/patient', doctorBodyGuard, patient);
 
 /**
  * Export lastly

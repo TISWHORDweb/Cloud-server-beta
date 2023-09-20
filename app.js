@@ -45,6 +45,7 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -70,6 +71,7 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/admin', adminRouter);
 app.use('/api/v1/doctor', doctorRouter);
 app.use('/api/v1/marketer', marketerRouter);
+
 //after all route, show 404
 app.use('*', () => {
     throw new errorHandle("Resource not found", 404);

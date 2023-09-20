@@ -7,6 +7,7 @@ const CoreError = require('./../core/core.error');
 
 //load controller and utils
 const { allAdmins, getAdmin } = require('../controllers/controller.admin');
+const { faq } = require('../controllers/controller.faq');
 
 /**
  * auth routes
@@ -15,6 +16,9 @@ const { allAdmins, getAdmin } = require('../controllers/controller.admin');
 //ADMIN 
 router.get('/all', adminBodyGuard, allAdmins);
 router.get('/single', adminBodyGuard, getAdmin);
+
+//FAQ
+router.post('/faq/create', adminBodyGuard, faq);
 
 /**
  * Export lastly
